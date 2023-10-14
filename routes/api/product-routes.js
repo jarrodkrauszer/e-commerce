@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     res.json(products);
 
   } catch (err) {
-    res.json({ message: `There was an issue with your request: ${err}`});
+    res.status(400).json(err);
   }
 });
 
@@ -33,7 +33,7 @@ router.get('/:id', async (req, res) => {
     res.json(product);
 
   } catch (err) {
-    res.json({ message: `There was an issue with your request: ${err}`});
+    res.status(400).json(err);
   }
 });
 
@@ -118,13 +118,18 @@ router.delete('/:id', async (req, res) => {
   // delete one product by its `id` value
   const id = req.params.id;
 
-  await Product.destroy({
-    where: {
-      id: id
-    }
-  });
+  try {
+    await Product.destroy({
+      where: {
+        id: id
+      }
+    });
+  
+    res.json({ message: 'Product deleted successfully!' });
 
-  res.json({ message: 'Product deleted successfully!' });
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
 
 module.exports = router;
