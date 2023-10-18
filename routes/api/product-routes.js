@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     res.json(products);
 
   } catch (err) {
-    res.status(400).json(err);
+    res.status(503).json(err);
   }
 });
 
@@ -30,10 +30,14 @@ router.get('/:id', async (req, res) => {
       includes: [Category, Tag]
     });
 
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+
     res.json(product);
 
   } catch (err) {
-    res.status(400).json(err);
+    res.status(503).json(err);
   }
 });
 
@@ -114,6 +118,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
+// deletes product by id
 router.delete('/:id', async (req, res) => {
   // delete one product by its `id` value
   const id = req.params.id;
@@ -128,7 +133,7 @@ router.delete('/:id', async (req, res) => {
     res.json({ message: 'Product deleted successfully!' });
 
   } catch (err) {
-    res.status(400).json(err);
+    res.status(503).json(err);
   }
 });
 

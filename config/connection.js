@@ -2,7 +2,6 @@ const path = require('path');
 require('dotenv').config({path: path.join(__dirname, '../.env')});
 
 const Sequelize = require('sequelize');
-console.log(process.env.DB_NAME);
 
 const sequelize = process.env.JAWSDB_URL
   ? new Sequelize(process.env.JAWSDB_URL)

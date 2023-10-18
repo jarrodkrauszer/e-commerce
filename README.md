@@ -2,7 +2,7 @@
 
 ## Description
   
-With this homework we were tasked with using sequelize to create, read, update and delete from the e-commerce_db we created.  We were also taksed with using express to create the backend routes for all the functionality.  We used insomnia to test all of the routes needs and documented those results in a walkthrough video.
+With this homework we were tasked with using sequelize to create, read, update and delete from the e-commerce_db we created.  We were also tasked with using express to create the backend routes for all the functionality.  We used insomnia to test all of the routes needs and documented those results in a walkthrough video.
 
 ## Installation
 
@@ -14,7 +14,7 @@ npm i mysql2
 
 npm i path
 
-npm i sequelizt
+npm i sequelize
 
 ## Usage
 
@@ -29,4 +29,4 @@ Here is a link to the project: [E-Commerce](https://github.com/jarrodkrauszer/e-
   
 If you have any further questions you can email me at: [jarrod.krauszer@gmail.com](jarrod.krauszer@gmail.com)
 
-Here is a link to the demo video: [E-Commerce Walkthrough Video](https://youtu.be/5iZP3naqkj8)
+Here is a link to the demo video: [E-Commerce Walkthrough Video](https://youtu.be/Tlh7BMdoFwg)

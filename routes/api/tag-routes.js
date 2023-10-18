@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Tag, Product, ProductTag } = require('../../models');
 
 // The `/api/tags` endpoint
-
+// gets all tags
 router.get('/', async (req, res) => {
   // find all tags
   // be sure to include its associated Product data
@@ -16,6 +16,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// gets one tag by id
 router.get('/:id', async (req, res) => {
   // find a single tag by its `id`
   // be sure to include its associated Product data
@@ -24,6 +25,10 @@ router.get('/:id', async (req, res) => {
   try {
     const tag = await Tag.findByPk(id, { include: Product })
 
+    if (!tag) {
+      return res.status(404).json({ message: 'Tag not found' });
+    }
+    
     res.json(tag);
 
   } catch (err) {
@@ -31,6 +36,7 @@ router.get('/:id', async (req, res) => {
   } 
 });
 
+// creates a new tag
 router.post('/', async (req, res) => {
   // create a new tag
   const data = req.body;
@@ -51,6 +57,7 @@ router.post('/', async (req, res) => {
   }
 });
 
+// updates a tag by id
 router.put('/:id', async (req, res) => {
   // update a tag's name by its `id` value
   const id = req.params.id;
@@ -76,6 +83,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+// deletes tag by id
 router.delete('/:id', async (req, res) => {
   // delete on tag by its `id` value
   const id = req.params.id;
